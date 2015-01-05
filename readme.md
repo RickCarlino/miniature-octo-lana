@@ -1,4 +1,5 @@
-Weekend project to quickly build websocket applications with EventMachine.
+Ruby websocket microframework focusing on ease of use and ease of maintenance.
+
 # Intended implementation
 
 ```ruby
@@ -26,7 +27,7 @@ Weekend project to quickly build websocket applications with EventMachine.
   CatGoose.on_open  { |socket| socket.send_text 'Quack!'}
   CatGoose.on_close { |socket| socket.send_text 'Meoww!'}
 
-  CatGoose.fly!
+  CatGoose.fly
 ```
 
 # TODO:
@@ -35,4 +36,5 @@ Weekend project to quickly build websocket applications with EventMachine.
  * Specify not_found
  * Implement environments
  * Write tests
- * Security / DDoS protection / throtle settings
+ * Security / DDoS protection / throttle settings
+ * Post install message: https://github.com/jnunemaker/httparty/blob/e38baab559bb078ee421676b752d9877e5828b48/httparty.gemspec#L18
