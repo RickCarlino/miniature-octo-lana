@@ -9,8 +9,6 @@ Dir["lib/controllers/**/*.rb"].map { |cntrler| load cntrler }
 require_relative 'routes'
 module Catgoose
   class << self
-    attr_accessor options
-
     def fly
       EM.run do
         EM::WebSocket.run(host: "0.0.0.0", port: port) do |ws|
@@ -23,19 +21,13 @@ module Catgoose
     end
 
     def routes
-      if block_given?
-        # . . .
-      else
-        @routes ||= Router.new
-      end
+      @routes ||= Router.new
     end
 
     def config
-      if block_given?
-        # . . .
-      else
-        @config ||= Config.new
-      end
+      @config ||= Config.new
+      yield(@config) if block_given?
+      @config
     end
   end
 end
