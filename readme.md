@@ -9,14 +9,14 @@ Ruby websocket microframework focusing on ease of use and ease of maintenance.
     c.env  = :development
   end
 
-  class YourControllerClass < Mutations::Command
+  class YourControllerClass < CatGoose::Controller
   end
 
-  CatGoose.routes do
-    route 'your_action_name' => YourControllerClass
-    route 'comments#create' => CommentsController::Create
-    not_found OptionalNotFoundController
-    error OptionalErrorHandler
+  CatGoose.draw do |map|
+    map.route     'your_action_name' => YourControllerClass
+    map.route     'comments#create' => CommentsController::Create
+    map.not_found OptionalNotFoundController # Has default
+    map.error     OptionalErrorHandler # Has default
   end
 
   CatGoose.before_message do |socket, payload|

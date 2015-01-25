@@ -1,4 +1,4 @@
-module CatGoose
+module Catgoose
   module Hooks
     def on_error
     end

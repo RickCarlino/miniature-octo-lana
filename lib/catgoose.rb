@@ -1,12 +1,23 @@
 require 'mutations'
 require 'em-websocket'
-require 'pry'
-require_relative 'handlers/abstract_handler'
 
-Dir["lib/handlers/**/on_*.rb"].map { |handler| load handler }
-Dir["lib/controllers/**/*.rb"].map { |cntrler| load cntrler }
+require 'catgoose/exceptions'
+require 'catgoose/config'
+require 'catgoose/hooks'
 
-require_relative 'routes'
+require 'catgoose/controllers/not_found_controller'
+
+require 'catgoose/handlers/abstract_handler'
+require 'catgoose/handlers/on_close'
+require 'catgoose/handlers/on_error'
+require 'catgoose/handlers/on_message'
+require 'catgoose/handlers/on_open'
+
+require 'catgoose/controller'
+
+require 'catgoose/route_mapping'
+require 'catgoose/router'
+
 module Catgoose
   class << self
     def fly
