@@ -11,6 +11,7 @@ Yes.
 ## How Do I Use This Thing?
 
 ```ruby
+  require 'catgoose'
 
   Catgoose.config do |c|
     c.port = 8080
