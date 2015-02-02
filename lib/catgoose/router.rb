@@ -7,7 +7,7 @@ module Catgoose
     end
 
     def route(mapping)
-      map.merge(RouteMapping.new(mapping).input)
+      map.merge!(RouteMapping.new(mapping).input)
     end
 
     def not_found(mapping)
@@ -17,6 +17,10 @@ module Catgoose
 
     def draw
       yield(self)
+    end
+
+    def [](address)
+      map[address]
     end
   end
 end
