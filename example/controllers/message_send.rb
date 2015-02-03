@@ -1,10 +1,12 @@
 class MessageSend < Catgoose::Controller
   required do
     string :message
+    string :room
   end
 
   def execute
-    {message: message,
-     from: session[:username]}
+    msg = {message: message, from: session[:username]}
+    binding.pry
+    Catgoose.channels[name.to_sym].publish msg
   end
 end

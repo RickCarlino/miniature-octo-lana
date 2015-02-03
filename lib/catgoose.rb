@@ -5,6 +5,7 @@ require_relative 'catgoose/exceptions'
 require_relative 'catgoose/config'
 require_relative 'catgoose/hook'
 require_relative 'catgoose/session'
+require_relative 'catgoose/channel'
 
 require_relative 'catgoose/controllers/not_found_controller'
 
@@ -89,6 +90,11 @@ module Catgoose
 
     def callbacks
       @callbacks ||= Hash.new { |hash, key| hash[key] = Hook.new }
+    end
+
+    def channel
+      # TODO possible DDoS target by filling memory?
+      @channels ||= Hash.new { |hash, key| hash[key] = Channel.new }
     end
   end
 end

@@ -1,4 +1,5 @@
 Catgoose.draw do |map|
-  map.route     'authenticate' => Authenticate
-  map.route     'message.send' => MessageSend
+  map.route 'login' => Authenticate
+  map.route 'chat'  => MessageSend
+  map.route 'join'  => RoomSubscribe
 end
