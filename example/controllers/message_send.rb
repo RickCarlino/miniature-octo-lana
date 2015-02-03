@@ -6,7 +6,6 @@ class MessageSend < Catgoose::Controller
 
   def execute
     msg = {message: message, from: session[:username]}
-    binding.pry
     Catgoose.channels[name.to_sym].publish msg
   end
 end
