@@ -2,6 +2,7 @@ require_relative '../lib/catgoose'
 require_relative 'config'
 require_relative 'controllers/message_send'
 require_relative 'controllers/authenticate'
+require_relative 'controllers/room_subscribe'
 require_relative 'routes'
 require 'pry'
 

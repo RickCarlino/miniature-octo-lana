@@ -1,4 +1,4 @@
-class MessageSend < Catgoose::Controller
+class RoomSubscribe < Catgoose::Controller
   required do
     string :name
   end
