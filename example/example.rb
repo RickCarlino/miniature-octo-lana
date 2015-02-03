@@ -4,7 +4,7 @@ require_relative 'controllers/message_send'
 require_relative 'controllers/authenticate'
 require_relative 'controllers/room_subscribe'
 require_relative 'routes'
-require 'pry'
+# require 'pry'
 
 Catgoose.before_message do |a, b|
   puts 'incoming message.'
