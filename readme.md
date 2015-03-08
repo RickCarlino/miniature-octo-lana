@@ -71,10 +71,14 @@ Yes.
 
 # TODO:
 
+ * Write tests for handlers
+ * Integration test, maybe?
+ * Force all payload data into a "data" JSON attribute.
+ * Add an "action" attribute to outgoing messages, too.
  * Make a better default not_found controller
  * Implement a redirect_to method for before_message
  * Support for WSS
- * Implement environments
+ * Better environments
  * DDoS protection / throttle settings
  * Add post install message
  * Rescue_from
