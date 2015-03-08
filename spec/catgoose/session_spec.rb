@@ -11,7 +11,7 @@ class StubChannel
   end
 
   def subscribe(obj)
-    subscribers[obj.object_id] = obj
+    subscribers[obj] = obj
   end
 
   def unsubscribe(obj)
@@ -32,6 +32,6 @@ describe Catgoose::Session do
     session.subscribe(:stub)
     expect(channels[:stub].subscribers.count).to eq(1)
     session.unsubscribe(:stub)
-    expect(channels[:stub].subscribers.count).to eq(1)
+    expect(channels[:stub].subscribers.count).to eq(0)
   end
 end
