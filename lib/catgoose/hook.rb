@@ -1,5 +1,5 @@
 module Catgoose
-  # TODO: This can probably be handled natively with EM.
+  # TODO: This can probably be handled natively with EM::Calback.
   class Hook
     attr_accessor :callbacks
 

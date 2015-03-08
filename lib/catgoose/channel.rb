@@ -4,6 +4,7 @@ module Catgoose
 
     def initialize(name)
       @name = name.to_sym
+      super()
     end
 
     def publish(msg)
@@ -14,9 +15,8 @@ module Catgoose
       # TODO consolidate all the JSON packing and unpacking into one location.
       # There is duplicate logic in here and abstract handler. Putting that in
       # one location also opens the door to alternative serialization methods.
-      sid = super() do |msg|
-        session.send_text JSON.generate(msg)
-      end
+      sid = super() { |msg| session.socket.send_text JSON.generate(msg) }
+      session[:subscriptions] ||= {}
       session[:subscriptions][name] = sid
     end
 

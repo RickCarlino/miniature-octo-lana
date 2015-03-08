@@ -92,7 +92,7 @@ module Catgoose
       @callbacks ||= Hash.new { |hash, key| hash[key] = Hook.new }
     end
 
-    def channel
+    def channels
       # TODO possible DDoS target by filling memory?
       @channels ||= Hash.new { |hash, key| hash[key] = Channel.new }
     end
