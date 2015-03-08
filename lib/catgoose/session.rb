@@ -1,29 +1,27 @@
 module Catgoose
   class Session
-    attr_reader :socket
+    # Is @socket needed? Remove if not.
+    attr_reader :socket, :channels, :store
 
-    def initialize(socket)
-      @socket = socket
+    def initialize(socket, channels = Catgoose.channels)
+      @socket, @channels, @store = socket, channels, {}
     end
 
     def subscribe(name)
-      Catgoose.channels[name.to_sym].subscribe(self)
+      # TODO handle invalid subscription names
+      channels[name.to_sym].subscribe(self)
     end
 
     def unsubscribe(name)
-      Catgoose.channels[name.to_sym].unsubscribe(self)
+      channels[name.to_sym].unsubscribe(self)
     end
 
     def [](key)
-      hash[key.to_sym]
+      store[key.to_sym]
     end
 
     def []=(key, value)
-      hash[key.to_sym] = value
-    end
-
-    def hash
-      @hash ||= {}
+      store[key.to_sym] = value
     end
   end
 end
