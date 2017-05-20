@@ -8,9 +8,8 @@ export interface NumberAtom { kind: AtomType.Number_; value: number; }
 export interface SymbolAtom { kind: AtomType.Symbol; value: string; }
 export interface Pair { kind: AtomType.Pair; value: Cons; }
 export interface Cons { h: Atom; t: Atom; }
-export interface Native { kind: AtomType.Native; value: NativeFn; }
-// Probably needs built-ins...
 // http://sandbox.mc.edu/~bennet/cs404/doc/tomslsp/code/builtinDESC.html
+export interface Native { kind: AtomType.Native; value: NativeFn; }
 export type Atom =
   | NilAtom
   | SymbolAtom
@@ -33,7 +32,7 @@ export function nil(): NilAtom {
 };
 
 export function num(value: number): NumberAtom {
-  return { kind: AtomType.Numbr, value };
+  return { kind: AtomType.Number_, value };
 }
 
 export function sym(value: string): SymbolAtom {
@@ -64,7 +63,7 @@ export interface Context {
   environment: Environment;
 }
 
-export function make_symbol(value: string, env: Environment): SymbolAtom {
+export function make_symbol(value: string, env: Environment): Atom {
   let x = env.bindings[value];
   if (x) {
     return x;
