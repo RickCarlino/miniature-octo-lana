@@ -5,7 +5,11 @@ export interface NumberAtom { kind: AtomType.Integer; value: number; }
 export interface NilAtom { kind: AtomType.Nil; value: AtomType.Nil; }
 export interface Pair { kind: AtomType.Pair; value: Cons; }
 export interface SymbolAtom { kind: AtomType.Symbol; value: string; }
-export type Atom = NilAtom | SymbolAtom | NumberAtom | Pair;
+export type Atom =
+  | NilAtom
+  | SymbolAtom
+  | NumberAtom
+  | Pair;
 
 export let car = (p: Pair): Atom => p.value.car;
 export let cdr = (p: Pair): Atom => p.value.cdr;
@@ -84,7 +88,7 @@ export function listP(expr: Atom): number {
   throw new Error("BRB");
 }
 
-function evalExpr(expr: Expression, env: SYMBOL_TABLE): Atom | Err {
+function evalExpr(expr: Expression, env: Environment): Atom | Err {
   throw new Error("BRB");
 }
 
@@ -113,4 +117,4 @@ interface Quote {
 
 let myApp = expr("+", num(1), num(2));
 
-evalExpr(myApp, {});
+evalExpr(myApp, { parent: undefined, bindings: {} });
