@@ -1,27 +1,26 @@
 /** Tag an atom with an identifier. */
 export enum AtomType { Nil, Pair, Symbol, Integer }
-export interface Cons { car: Atom; cdr: Atom; }
-export interface NumberAtom { kind: AtomType.Integer; value: number; }
 export interface NilAtom { kind: AtomType.Nil; value: AtomType.Nil; }
-export interface Pair { kind: AtomType.Pair; value: Cons; }
+export interface NumberAtom { kind: AtomType.Integer; value: number; }
 export interface SymbolAtom { kind: AtomType.Symbol; value: string; }
+export interface Pair { kind: AtomType.Pair; value: Cons; }
+export interface Cons { car: Atom; cdr: Atom; }
+// Probably needs built-ins...
+// http://sandbox.mc.edu/~bennet/cs404/doc/tomslsp/code/builtinDESC.html
 export type Atom =
   | NilAtom
   | SymbolAtom
   | NumberAtom
   | Pair;
-
-export let car = (p: Pair): Atom => p.value.car;
-export let cdr = (p: Pair): Atom => p.value.cdr;
-
 /** ...is Nil predicate. */
-export let nilp = (p: Atom): p is NilAtom => p.kind == AtomType.Nil;
+export let nilP = (p: Atom): p is NilAtom => p.kind == AtomType.Nil;
 export let isPair = (p: Atom): p is Pair => p.kind == AtomType.Pair;
-
-/** "cons"truct a pair. */
+/** "construct" a pair. */
 export function cons(car: Atom, cdr: Atom): Pair {
   return { kind: AtomType.Pair, value: { car, cdr } };
 }
+export let car = (p: Pair): Atom => p.value.car;
+export let cdr = (p: Pair): Atom => p.value.cdr;
 
 export function nil(): NilAtom {
   return { kind: AtomType.Nil, value: AtomType.Nil };
@@ -75,7 +74,7 @@ export function env_create(parent: Pair | NilAtom): Pair {
   return cons(parent, nil());
 }
 
-function envGet(env: Environment, symbol: SymbolAtom): Err {
+export function envGet(env: Environment, symbol: SymbolAtom): Err {
   throw new Error("Throw an exception for unbound stuff.?");
 }
 
@@ -88,7 +87,7 @@ export function listP(expr: Atom): number {
   throw new Error("BRB");
 }
 
-function evalExpr(expr: Expression, env: Environment): Atom | Err {
+export function s_expr(expr: Atom, env: Environment): Atom {
   throw new Error("BRB");
 }
 
@@ -114,7 +113,3 @@ interface Quote {
   predicate: SymbolAtom;
   body: Atom[];
 }
-
-let myApp = expr("+", num(1), num(2));
-
-evalExpr(myApp, { parent: undefined, bindings: {} });
