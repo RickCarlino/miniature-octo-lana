@@ -50,5 +50,8 @@ describe("lisp", () => {
     expect(result.kind).toEqual(AtomType.Number_);
     expect(result.value).toBe(4);
   });
+
+  it("evals (log (+ 1 2 (* 3 4)))");
+  it("evals (log (4 5 6 7))");
 });
 
