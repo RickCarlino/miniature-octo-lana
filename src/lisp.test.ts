@@ -13,29 +13,25 @@ import {
   Atom
 } from "./lisp";
 let add: Native["value"] = (arg, env) => {
-  switch (arg.kind) {
-    case AtomType.Pair:
-      if (isNum(arg.value.h)) {
-        // Push head
-        env.stack.push(arg.value.h);
-        // Recurse into tail
-        let next = arg.value.t;
-        return add(next, env);
-      }
-    case AtomType.Number_:
-      env.stack.push(arg);
-      return arg;
-    default:
-      throw Err.Args;
-  }
+  console.log(JSON.stringify(arg));
+  throw new Error("Whoop!");
 };
-function ctx(): Context {
+
+function todo(arg: Atom, env: Context) {
+  let nil: Atom = {
+    kind: AtomType.Nil,
+    value: AtomType.Nil
+  };
+  return nil;
+}
+function newContext(): Context {
   return {
     stack: [],
     environment: {
       parent: undefined,
       bindings: {
-        "+": native(add)
+        "+": native(add),
+        "log": native(todo)
       }
     }
   };
@@ -44,14 +40,15 @@ function ctx(): Context {
 describe("lisp", () => {
   it("evaluates addition", () => {
     // (+ 2 2)
-    let code = cons(sym("+"), cons(num(2), num(2)));
-    console.log(JSON.stringify(code));
-    let result = evaluate(code, ctx());
+    let code = cons(sym("+"), cons(num(1),
+      cons(num(2), num(3))));
+    let result = evaluate(code, newContext());
     expect(result.kind).toEqual(AtomType.Number_);
     expect(result.value).toBe(4);
   });
 
   it("evals (log (+ 1 2 (* 3 4)))");
   it("evals (log (4 5 6 7))");
+  it("defines a value");
+  it("creates a lambda");
 });
-
