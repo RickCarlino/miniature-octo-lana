@@ -1,30 +1,42 @@
-# Boilerplate
+# JSON Based "Lisp"
 
-This is my boilerplate. There are many like it, but this one is mine.
+Exploring some problems / ideas / solutions relating to user extensible programming environments. **This is purely an exploration of ideas.** Please don't use it for anything useful!
 
-It's a bare minimum to get started with a TS / React project.
+## Progress
 
-## Mandatory Screenshot
+ * `eval` is almost done. Probably needs a `VM` interface for tracking DS, RS, bindings, etc...
 
-![screenshot](screenshot.png)
+## Similar Works
 
-## The Stack
+ * JSON Script
+ * Blockly
+ * IFFT (proprietary)
 
+## Areas of Exploration
 
- * [Webpack](https://webpack.github.io/) for modules and bundling.
- * [Typescript](https://www.typescriptlang.org/) and TSLint for sanity.
- * [BlueprintJS](http://blueprintjs.com/) for UI component
- * [React](https://facebook.github.io/react/) and [React Router](https://github.com/ReactTraining/react-router) for the view layer stuff.
+ * Verify correctness before running.
+ * Self documentation of variables, builtins, calls, etc.
+ * Relocate / package AST nodes.
+ * Functions, nesting of functions, passing of functions, etc.
+ * Pausing, time slicing, resuming execution.
+ * Nodes that can modify existing nodes / macros.
+ * (Similar to above) Creating UIs that do not have a 1-to-1 correspondence to generated nodes.
 
-## Usage
+## Structure
+
+ * Atoms
+ * Expressions
+ * "Thing"
+ * Quote/Unquote??
+
+## Run
 
  1. `npm install`
  2. `npm start`
  3. Visit http://localhost:3002/
 
-## TODOs
+## Test
 
- - [ ] MobX
- - [ ] Code Splitting
- - [ ] Testing and code coverage tools.
- 
+1. `npm install jest-cli -g`
+2. `npm install`
+3. `jest`
