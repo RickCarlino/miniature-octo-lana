@@ -5,8 +5,8 @@ Exploring some problems / ideas / solutions relating to user extensible programm
 ## Progress
 
  - [X] `eval` can evaluate expressions that use builtin (native) functions.
+ - [ ] `lambda` expressions (TODO: `defun()` helper)
  - [ ] `let` expressions
- - [ ] `lambda` expressions
  - [ ] Macro expressions???
 
 ## Similar Works

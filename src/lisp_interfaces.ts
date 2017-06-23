@@ -6,7 +6,7 @@ export interface Builtin { k: Kind.Builtin; v(expr: Expression, env: Environment
 export interface Pair { k: Kind.Pair; v: Cons; }
 export interface Cons { k: Kind.Cons, h: Atom; t: Atom; }
 export type Atom = NilAtom | NumberAtom | SymbolAtom | Builtin | Pair;
-export type List<T extends Atom = Atom> = { k: Kind.List, v: Atom[] };
+export type List = { k: Kind.List, v: (Atom | Expression)[] };
 export type Thing = Atom | List;
 export interface Expression { k: Kind.Expression; h: SymbolAtom; t: List; }
 export type SYMBOL_TABLE = { [name: string]: Atom | undefined };
