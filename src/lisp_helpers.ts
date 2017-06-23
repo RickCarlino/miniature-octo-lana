@@ -38,14 +38,13 @@ export function builtin(v: Builtin["v"]): Builtin {
   return { k: Kind.Builtin, v };
 }
 
-export function expr(v: string, ...body: Atom[]): Expression {
-  return {
-    k: Kind.Expression,
-    h: sym(v),
-    t: { k: Kind.List, v: body }
-  };
+export function expr(h: SymbolAtom, ...body: Atom[]): Expression {
+  return { k: Kind.Expression, h, t: { k: Kind.List, v: body } };
 }
 
+export function defun() {
+  throw new Error("NOT IMPL")
+}
 export function envGet(sym: SymbolAtom, env: Environment): Atom {
   let binding = env.bindings[sym.v];
   if (binding) {

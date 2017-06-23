@@ -25,12 +25,12 @@ function add(exr: Expression, env: Environment) {
 
 describe("lisp", () => {
   it("evaluates addition", () => {
-    let expresion = expr("+", num(2), num(2));
-    let result = evaluate(expresion, {
-      bindings: {
-        "+": builtin(add)
-      }
-    });
+    // (+ 2 2) in real lisp
+    let expresion = expr(sym("+"), num(2), num(2));
+
+    // A standard library that only has +
+    let result = evaluate(expresion, { bindings: { "+": builtin(add) } });
+
     expect(result.k).toEqual(Kind.Num);
     if (result.k === Kind.Num) {
       expect(result.v).toEqual(4);

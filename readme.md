@@ -4,7 +4,10 @@ Exploring some problems / ideas / solutions relating to user extensible programm
 
 ## Progress
 
- * `eval` is almost done. Probably needs a `VM` interface for tracking DS, RS, bindings, etc...
+ - [X] `eval` can evaluate expressions that use builtin (native) functions.
+ - [ ] `let` expressions
+ - [ ] `lambda` expressions
+ - [ ] Macro expressions???
 
 ## Similar Works
 
