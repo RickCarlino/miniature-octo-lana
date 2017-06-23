@@ -6,9 +6,7 @@ export function evaluate(expr: Expression, env: Environment): Thing {
   let binding = envGet(expr.h, env);
   switch (binding.k) {
     case Kind.Builtin:
-      binding.v.call(expr, env);
-      throw new Error("Stopped here. I think I need a VM" +
-        " interface for storind a stack.");
+      return binding.v(expr, env);
     default:
       throw new Error(Err.Type);
   }
