@@ -6,13 +6,12 @@ import {
   Environment,
   Err,
   Atom,
-  NumberAtom
+  NumberAtom,
+  Returnable
 } from "../lisp_interfaces";
 
-function add(exr: Expression, env: Environment) {
-  let memo: NumberAtom = num(0);
-  let list = exr.t.v;
-  return list.reduce((item, accum) => {
+function add(exr: Expression, env: Environment): Returnable {
+  let out = exr.t.v.reduce((item, accum) => {
     if ((item.k === Kind.Num) && (accum.k === Kind.Num)) {
       let ok = item.v;
       accum.v += ok
@@ -20,7 +19,12 @@ function add(exr: Expression, env: Environment) {
     } else {
       throw Err.Type;
     }
-  }, memo);
+  }, num(0));
+  if (out.k === Kind.Expression) {
+    throw new Error(Err.Type);
+  } else {
+    return out;
+  };
 }
 
 describe("lisp", () => {

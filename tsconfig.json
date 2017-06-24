@@ -11,7 +11,8 @@
     "noImplicitAny": true,
     "allowUnreachableCode": false,
     "strictNullChecks": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "noEmit": true
   },
   "exclude": [
     "node_modules",

@@ -7,9 +7,9 @@ import {
   Expression,
   Pair,
   Environment,
-  Thing,
   Err,
-  Builtin
+  Builtin,
+  List
 } from "./lisp_interfaces";
 
 export let nilP = (p: Atom): p is NilAtom => p.k == Kind.Nil;
@@ -42,7 +42,7 @@ export function expr(h: SymbolAtom, ...body: Atom[]): Expression {
   return { k: Kind.Expression, h, t: { k: Kind.List, v: body } };
 }
 
-export function defun(h: SymbolAtom, args_: SymbolAtom[], body: Expression) {
+export function lambda(args_: List<SymbolAtom>, body: Expression) {
   throw new Error("NOT IMPL");
 }
 export function envGet(sym: SymbolAtom, env: Environment): Atom {
