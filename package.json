@@ -1,6 +1,7 @@
 {
-  "name": "rick_carlino_boilerplate",
+  "name": "json_lisp",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
